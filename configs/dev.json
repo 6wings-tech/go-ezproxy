@@ -1,0 +1,7 @@
+{
+    "gitdirs": [
+        "/var/git"
+    ],
+    "domain": "g.6wings.tech",
+    "cloneUrlPrefix": "ssh://git@g.6wings.tech"
+}
