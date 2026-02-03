@@ -15,8 +15,11 @@ import (
 )
 
 func ReposWatcher() {
-	// dur := 15 * time.Second
-	dur := 5 * time.Minute
+	dur, err := time.ParseDuration(cfg.C.RescanTmo)
+	if err != nil {
+		log.Fatalf("[ERR ] bad rescan timeout: %v", err)
+	}
+
 	tkr := time.NewTicker(time.Millisecond) // Immediately scanning at the first launch
 	defer tkr.Stop()
 
@@ -24,7 +27,7 @@ func ReposWatcher() {
 		rs.mu.Lock()
 		tkr.Stop()
 
-		log.Println("[INFO] Rescaning repos")
+		log.Printf("[INFO] Rescaning repos each %s", dur.String())
 
 		for _, gitDir := range cfg.C.GitDirs {
 			entries, err := os.ReadDir(gitDir)

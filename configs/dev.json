@@ -2,6 +2,7 @@
     "gitdirs": [
         "/var/git"
     ],
+    "rescanTmo": "1m",
     "domain": "g.6wings.tech",
     "cloneUrlPrefix": "ssh://git@g.6wings.tech"
 }
