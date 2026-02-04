@@ -96,7 +96,25 @@ func ReposWatcher() {
 		}
 
 		if reloaded > 0 {
-			log.Printf("🔵 [INFO] %d repo(s) reloaded", len(rs.repos))
+			s := strings.Builder{}
+			s.WriteString(fmt.Sprintf("🔵 [INFO] %d repo(s) reloaded:\n", len(rs.repos)))
+
+			i := 1
+			for mod, r := range rs.repos {
+				if len(r.Tags) > 0 {
+					s.WriteString(fmt.Sprintf("    %d. mod %q tags:\n", i, mod))
+					for _, t := range r.Tags {
+						s.WriteString(fmt.Sprintf("       - %s\n", t.Version))
+					}
+
+				} else {
+					s.WriteString(fmt.Sprintf("    %d. mod %q has no tags\n", i, mod))
+				}
+
+				i++
+			}
+			log.Printf(s.String())
+
 		} else if ttlRescans > 0 && ttlRescans%100 == 0 {
 			// to prevent disk space exhausting log it each 100 time
 			log.Printf("🔵 [INFO] at totally repos in %q rescanned %d time(s)", cfg.C.ReposRoot, ttlRescans)
