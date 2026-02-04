@@ -132,7 +132,7 @@ func modGoImportHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	s := repo.ImportHtml()
+	s := repo.GoImportHtml()
 	w.Header().Add("Content-Type", "text/html")
 	w.Write([]byte(s))
 

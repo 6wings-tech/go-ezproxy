@@ -41,9 +41,9 @@ func (r repo) ModUrl() string {
 	return cfg.C.Domain + "/" + r.Mod
 }
 
-// ImportHtml generates the instruction strcing for the "go get" command
-func (r repo) ImportHtml() string {
-	s := fmt.Sprintf("<meta name=\"go-import\" content=\"%s %s %s\">", r.ModUrl, "git", r.CloneUrl())
+// GoImportHtml generates the instruction strcing for the "go get" command
+func (r repo) GoImportHtml() string {
+	s := fmt.Sprintf("<meta name=\"go-import\" content=\"%s %s %s\">", r.ModUrl(), "git", r.CloneUrl())
 	return s
 }
 
