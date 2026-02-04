@@ -2,10 +2,13 @@ package git
 
 import (
 	"bytes"
+	"ezp/pkg/cfg"
 	"fmt"
 	"log"
 	"os"
 	"os/exec"
+	"strconv"
+	"time"
 )
 
 // Version as semver (x.y.z)
@@ -14,16 +17,33 @@ type verT = string
 
 type repo struct {
 	Mod       string
-	ModUrl    string
-	CloneUrl  string
-	RepoDir   string
-	Tags      map[verT]Tag // sorted versions
-	LatestTag Tag          // latest version
+	ModifTime time.Time
+	Root      string
+	Tags      map[verT]Tag
+	LatestTag Tag // latest version
+}
+
+// CloneUrl returns an ssh url for the `go get` command
+// An exmaple of a returned value is "ssh://git@example.com:12345/var/git"
+func (r repo) CloneUrl() string {
+	host := cfg.C.Domain
+	if cfg.C.SshPort != 22 {
+		host += ":" + strconv.Itoa(cfg.C.SshPort)
+	}
+	return "ssh://" + cfg.C.SshUser + "@" + host + r.Root
+}
+
+// ModUrl returns a module url that is required by `go get` command
+// An example of a returned value for repo `go-myrepo` is "g.6wings.tech/go-myrepo"
+// On `go get` or `go tidy` Go will be request "httpS://g.6wings.tech/go-myrepo"
+// to check a mod availability and it props
+func (r repo) ModUrl() string {
+	return cfg.C.Domain + "/" + r.Mod
 }
 
 // ImportHtml generates the instruction strcing for the "go get" command
 func (r repo) ImportHtml() string {
-	s := fmt.Sprintf("<meta name=\"go-import\" content=\"%s %s %s\">", r.ModUrl, "git", r.CloneUrl)
+	s := fmt.Sprintf("<meta name=\"go-import\" content=\"%s %s %s\">", r.ModUrl, "git", r.CloneUrl())
 	return s
 }
 
@@ -40,7 +60,7 @@ func (r repo) GoModFileContent(t Tag) (string, error) {
 		}
 	}()
 
-	err = os.Chdir(r.RepoDir)
+	err = os.Chdir(r.Root)
 	if err != nil {
 		return "", err
 	}
@@ -74,7 +94,7 @@ func (r repo) CreateZipArchive(t Tag) (string, error) {
 		}
 	}()
 
-	err = os.Chdir(r.RepoDir)
+	err = os.Chdir(r.Root)
 	if err != nil {
 		return "", err
 	}

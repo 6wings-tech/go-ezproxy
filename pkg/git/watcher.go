@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"ezp/pkg/cfg"
+	"fmt"
 	"io"
 	"log"
 	"os"
@@ -15,84 +16,123 @@ import (
 )
 
 func ReposWatcher() {
-	dur, err := time.ParseDuration(cfg.C.RescanTmo)
+	dur, err := time.ParseDuration("15s")
 	if err != nil {
-		log.Fatalf("[ERR ] bad rescan timeout: %v", err)
+		log.Fatalf("🔴 [ERR ] bad rescan timeout: %v", err)
 	}
 
 	tkr := time.NewTicker(time.Millisecond) // Immediately scanning at the first launch
 	defer tkr.Stop()
+	ttlRescans := 0  // a quantity of the repos rescans
+	reloaded := 0 // a reload repos quantity (if changes were found) during of the one rescaning
+
+	log.Printf("🔵 [INFO] repos root is %q", cfg.C.ReposRoot)
+	log.Printf("🔵 [INFO] checking repos changes planned at each %s", dur.String())
 
 	for range tkr.C {
 		rs.mu.Lock()
 		tkr.Stop()
 
-		log.Printf("[INFO] Rescaning repos each %s", dur.String())
+		reloaded = 0
+		ttlRescans++
 
-		for _, gitDir := range cfg.C.GitDirs {
-			entries, err := os.ReadDir(gitDir)
-			if err != nil {
-				log.Fatal(err)
+		entries, err := os.ReadDir(cfg.C.ReposRoot)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		for _, e := range entries {
+			if !e.IsDir() {
+				continue
 			}
 
-			for _, e := range entries {
-				if !e.IsDir() {
+			// Getting info of a BARE repo
+			repoRoot := cfg.C.ReposRoot + "/" + e.Name()
+
+			br, err := getBareRepo(repoRoot)
+			if err != nil {
+				log.Fatalf("🔴 [ERR ] %v", err)
+				continue
+			}
+
+			mod := e.Name()
+
+			r, ok := rs.repos[mod]
+			if ok && r.Root != repoRoot {
+				log.Printf("🟡 [WARN] skip repo %q: a repo with the same name (%q) was already found in %q", repoRoot, mod, r.Root)
+				continue
+			} else if ok {
+				bMt := br.ModifTime.In(time.UTC).Format("2006-01-02 15:04:05")
+				rMt := r.ModifTime.In(time.UTC).Format("2006-01-02 15:04:05")
+
+				// No changes since of the last commit
+				if bMt == rMt {
 					continue
 				}
+			}
 
-				// Search for "/.git"
-				repoDir := gitDir + "/" + e.Name()
+			// Tags
+			tags, latest, err := getRepoTags(repoRoot)
+			if err != nil {
+				log.Printf("🟡 [WARN] skip repo %q: unable get tags: %v", repoRoot, err)
+				continue
+			}
 
-				fi, err := os.Stat(repoDir)
-				if err != nil {
-					if errors.Is(err, os.ErrNotExist) {
-						log.Printf("[WARN] skip repo %q: no git repo was found inside it", repoDir)
-						continue
-					} else {
-						log.Fatalf("[ERR ] %v", err)
-					}
-				} else if !fi.IsDir() {
-					log.Printf("[WARN] skip repo %q: is not a git repo", repoDir)
-					continue
-				}
+			// Collecting
+			rs.repos[mod] = repo{
+				Mod:       mod,
+				Root:      repoRoot,
+				ModifTime: br.ModifTime,
+				Tags:      tags,
+				LatestTag: latest,
+			}
 
-				tags, latest, err := getRepoTags(repoDir)
-				if err != nil {
-					log.Printf("[WARN] skip repo %q: unable get tags: %v", repoDir, err)
-					continue
-				}
-
-				if len(tags) == 0 {
-					log.Printf("[WARN] skip repo %q: no tags were found", repoDir)
-					continue
-				}
-
-				mod := e.Name()
-
-				r, ok := rs.repos[mod]
-				if ok && r.RepoDir != repoDir {
-					log.Printf("[WARN] skip repo %q: a repo with the same name (%q) was already found in %q", repoDir, mod, r.RepoDir)
-					continue
-				}
-
-				rs.repos[mod] = repo{
-					Mod:       mod,
-					ModUrl:    cfg.C.Domain + "/" + mod,
-					CloneUrl:  cfg.C.CloneUrlPrefix + repoDir, // Example, ssh://git@g.6wings.tech:12345/var/git/go-swlog
-					RepoDir:   repoDir,
-					Tags:      tags,
-					LatestTag: latest,
-				}
-
-				log.Printf("[ OK ] repo %q was loaded with %d tag(s)", repoDir, len(rs.repos[mod].Tags))
+			if len(tags) == 0 {
+				log.Printf("🟡 [WARN] repo %q has no tags yet", repoRoot)
+			} else {
+				log.Printf("🟢 [ OK ] repo %q was loaded with %d tag(s)", repoRoot, len(rs.repos[mod].Tags))
+				reloaded++
 			}
 		}
 
-		log.Printf("[INFO] %d repo(s) loaded", len(rs.repos))
+		if reloaded > 0 {
+			log.Printf("🔵 [INFO] %d repo(s) reloaded", len(rs.repos))
+		} else if ttlRescans > 0 && ttlRescans%100 == 0 {
+			// to prevent disk space exhausting log it each 100 time
+			log.Printf("🔵 [INFO] at totally repos in %q rescanned %d time(s)", cfg.C.ReposRoot, ttlRescans)
+		}
 
 		tkr.Reset(dur)
 		rs.mu.Unlock()
 	}
+}
+
+func getBareRepo(repoRoot string) (bareRepo, error) {
+	fi, err := os.Stat(repoRoot)
+	if err != nil {
+		return bareRepo{}, err
+	} else if !fi.IsDir() {
+		return bareRepo{}, fmt.Errorf("%q not a dir", repoRoot)
+	}
+
+	// dir "objects/"
+	res := repoRoot + "/objects"
+	ft, err := os.Stat(res)
+	if err != nil {
+		if errors.Is(err, os.ErrNotExist) {
+			return bareRepo{}, fmt.Errorf("subdir %q not found. Maybe %q it's not a bare repo?", res, repoRoot)
+		} else {
+			return bareRepo{}, err
+		}
+	} else if !fi.IsDir() {
+		return bareRepo{}, fmt.Errorf("subdir %q not found in the bare repo", res)
+	}
+
+	br := bareRepo{
+		ModifTime: ft.ModTime(),
+	}
+
+	return br, nil
 }
 
 func getRepoTags(repoDir string) (map[verT]Tag, Tag, error) {

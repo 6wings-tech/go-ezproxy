@@ -24,10 +24,10 @@ func (s *server) Run() {
 		Handler:      mux,
 	}
 
-	log.Printf("[SRV] Starting a server at %s", s.addr)
+	log.Printf("🔵 [INFO] starting a server at %s", s.addr)
 
 	if err := srv.ListenAndServe(); err != nil {
-		log.Fatalf("[SRV] %v", err)
+		log.Fatalf("🔴 [ERR ] %v", err)
 	}
 }
 

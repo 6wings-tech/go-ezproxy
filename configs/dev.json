@@ -1,8 +1,6 @@
 {
-    "gitdirs": [
-        "/var/git"
-    ],
-    "rescanTmo": "1m",
+    "reposRoot": "/home/aleksei/dev",
     "domain": "g.6wings.tech",
-    "cloneUrlPrefix": "ssh://git@g.6wings.tech"
+    "sshUser": "git",
+    "sshPort": 22
 }

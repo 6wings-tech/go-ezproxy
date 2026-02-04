@@ -40,6 +40,10 @@ func FindRepoOfVer(mod modT, ver verT) (repo, Tag, error) {
 		return repo{}, Tag{}, errors.New("repo not found")
 	}
 
+	if len(r.Tags) == 0 {
+		return repo{}, Tag{}, errors.New("repo has no versions commited")
+	}
+
 	t, ok := r.Tags[ver]
 	if !ok {
 		return repo{}, Tag{}, errors.New("version not found")
