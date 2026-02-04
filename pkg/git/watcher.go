@@ -88,7 +88,7 @@ func ReposWatcher() {
 			}
 
 			if len(tags) == 0 {
-				log.Printf("🟡 [WARN] repo %q has no tags yet", repoRoot)
+				log.Printf("🟡 [WARN] repo %q has no tags", repoRoot)
 			} else {
 				log.Printf("🟢 [ OK ] repo %q was loaded with %d tag(s)", repoRoot, len(rs.repos[mod].Tags))
 				reloaded++
