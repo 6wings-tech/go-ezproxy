@@ -2,7 +2,6 @@ package git
 
 import (
 	"bytes"
-	"errors"
 	"ezp/pkg/cfg"
 	"fmt"
 	"io"
@@ -23,8 +22,8 @@ func ReposWatcher() {
 
 	tkr := time.NewTicker(time.Millisecond) // Immediately scanning at the first launch
 	defer tkr.Stop()
-	ttlRescans := 0  // a quantity of the repos rescans
-	reloaded := 0 // a reload repos quantity (if changes were found) during of the one rescaning
+	ttlRescans := 0 // a quantity of the repos rescans
+	reloaded := 0   // a reload repos quantity (if changes were found) during of the one rescaning
 
 	log.Printf("🔵 [INFO] repos root is %q", cfg.C.ReposRoot)
 	log.Printf("🔵 [INFO] checking repos changes planned at each %s", dur.String())
@@ -49,7 +48,7 @@ func ReposWatcher() {
 			// Getting info of a BARE repo
 			repoRoot := cfg.C.ReposRoot + "/" + e.Name()
 
-			br, err := getBareRepo(repoRoot)
+			br, err := NewBareRepo(repoRoot)
 			if err != nil {
 				log.Fatalf("🔴 [ERR ] %v", err)
 				continue
@@ -123,34 +122,6 @@ func ReposWatcher() {
 		tkr.Reset(dur)
 		rs.mu.Unlock()
 	}
-}
-
-func getBareRepo(repoRoot string) (bareRepo, error) {
-	fi, err := os.Stat(repoRoot)
-	if err != nil {
-		return bareRepo{}, err
-	} else if !fi.IsDir() {
-		return bareRepo{}, fmt.Errorf("%q not a dir", repoRoot)
-	}
-
-	// dir "objects/"
-	res := repoRoot + "/objects"
-	ft, err := os.Stat(res)
-	if err != nil {
-		if errors.Is(err, os.ErrNotExist) {
-			return bareRepo{}, fmt.Errorf("subdir %q not found. Maybe %q it's not a bare repo?", res, repoRoot)
-		} else {
-			return bareRepo{}, err
-		}
-	} else if !fi.IsDir() {
-		return bareRepo{}, fmt.Errorf("subdir %q not found in the bare repo", res)
-	}
-
-	br := bareRepo{
-		ModifTime: ft.ModTime(),
-	}
-
-	return br, nil
 }
 
 func getRepoTags(repoDir string) (map[verT]Tag, Tag, error) {
