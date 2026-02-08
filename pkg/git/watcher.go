@@ -50,7 +50,7 @@ func ReposWatcher() {
 
 			br, err := NewBareRepo(repoRoot)
 			if err != nil {
-				log.Fatalf("🔴 [ERR ] %v", err)
+				log.Printf("🟡 [WARN] skiping the dir because it's not a bare repo at this moment: %v", err)
 				continue
 			}
 
@@ -60,6 +60,26 @@ func ReposWatcher() {
 			if ok && r.Root != repoRoot {
 				log.Printf("🟡 [WARN] skip repo %q: a repo with the same name (%q) was already found in %q", repoRoot, mod, r.Root)
 				continue
+
+			} else if !ok {
+				if err := os.Chdir(repoRoot); err != nil {
+					log.Printf("🔴 [ERR ] skip repo %q: unable to change dir forward: %v", repoRoot, err)
+					continue
+				}
+
+				cmd := exec.Command("git", "update-server-info")
+				if err := cmd.Run(); err != nil {
+					log.Printf("🟡 [WARN] skip repo %q: a repo with the same name (%q) was already found in %q", repoRoot, mod, r.Root)
+					continue
+				} else {
+					log.Printf("🟢 [ OK ] repo %q: git server info updated", repoRoot)
+				}
+
+				if err := os.Chdir(cfg.C.ReposRoot); err != nil {
+					log.Printf("🔴 [ERR ] skip repo %q: unable to change dir back to %s: %v", repoRoot, cfg.C.ReposRoot, err)
+					continue
+				}
+
 			} else if ok {
 				bMt := br.ModifTime.In(time.UTC).Format("2006-01-02 15:04:05")
 				rMt := r.ModifTime.In(time.UTC).Format("2006-01-02 15:04:05")
