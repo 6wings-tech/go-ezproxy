@@ -10,9 +10,9 @@ In a case when you want to use your own Go modules in your different projects yo
 - use Go proxy such as Athens or __EZProxy__
 
 ## How EZProxy works?
-![](//6wings-tech/go-ezproxy/blob/master/docs/pic-publish.png?raw=true)
+![](/6wings-tech/go-ezproxy/blob/master/docs/pic-publish.png?raw=true)
 
-![](//6wings-tech/go-ezproxy/blob/master/docs/pic-download.png?raw=true)
+![](/6wings-tech/go-ezproxy/blob/master/docs/pic-download.png?raw=true)
 
 ## Prerequisites
 1. VDS
