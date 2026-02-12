@@ -1,0 +1,177 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.6 Chrome/140.0.7339.249 Electron/38.8.0 Safari/537.36" version="29.3.6" pages="2">
+  <diagram name="Publish" id="VZfbzAlDTtym3kjaVHb_">
+    <mxGraphModel dx="1358" dy="842" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="cHpmoN6uUGRL3bSeeL-J-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="850" width="850" as="geometry" />
+        </mxCell>
+        <mxCell id="cZa7xREPNUCVvYtn2hbt-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="620" width="240" x="40" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="cZa7xREPNUCVvYtn2hbt-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="620" width="240" x="520" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="cZa7xREPNUCVvYtn2hbt-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;Your remote server&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="160" x="520" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="cZa7xREPNUCVvYtn2hbt-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 18px;&quot;&gt;Your PC&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="160" x="40" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="6TUfgK-I4r8hVUq-_ZQa-10" edge="1" parent="1" source="cZa7xREPNUCVvYtn2hbt-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="cZa7xREPNUCVvYtn2hbt-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6TUfgK-I4r8hVUq-_ZQa-12" connectable="0" parent="6TUfgK-I4r8hVUq-_ZQa-10" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;span style=&quot;font-size: 18px;&quot;&gt;(4) registering &lt;b&gt;new tag&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.4667" y="-3" as="geometry">
+            <mxPoint x="-3" y="16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cZa7xREPNUCVvYtn2hbt-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;ezproxy&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="200" x="540" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="cZa7xREPNUCVvYtn2hbt-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;git&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="200" x="540" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="cZa7xREPNUCVvYtn2hbt-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;/var/git/repo-1&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;/var/git/repo-2&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;...&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;/var/git/repo-N&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="170" width="200" x="540" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="cZa7xREPNUCVvYtn2hbt-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;~/my-repos/repo-1&lt;br&gt;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;~/my-repos&lt;/span&gt;/repo-2&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;...&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;~/my-repos&lt;/span&gt;/repo-N&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="170" width="200" x="60" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="cZa7xREPNUCVvYtn2hbt-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;git&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="200" x="60" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="6TUfgK-I4r8hVUq-_ZQa-2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;b style=&quot;&quot;&gt;bare&lt;/b&gt; repos&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="100" x="540" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="6TUfgK-I4r8hVUq-_ZQa-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;b style=&quot;&quot;&gt;regular &lt;/b&gt;(not bare)&amp;nbsp;repos&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="200" x="60" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="6TUfgK-I4r8hVUq-_ZQa-4" edge="1" parent="1" source="cZa7xREPNUCVvYtn2hbt-11" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="cZa7xREPNUCVvYtn2hbt-8" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="400" y="700" as="sourcePoint" />
+            <mxPoint x="450" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6TUfgK-I4r8hVUq-_ZQa-5" connectable="0" parent="6TUfgK-I4r8hVUq-_ZQa-4" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;(3) push a commit &amp;amp; &lt;b&gt;tag&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.2357" as="geometry">
+            <mxPoint x="33" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="foRmjqmN_KZ9A-qxsiMh-5" edge="1" parent="1" source="6TUfgK-I4r8hVUq-_ZQa-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="cZa7xREPNUCVvYtn2hbt-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="foRmjqmN_KZ9A-qxsiMh-6" connectable="0" parent="foRmjqmN_KZ9A-qxsiMh-5" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;span style=&quot;font-size: 18px;&quot;&gt;(2) create a commit &amp;amp; tag&lt;/span&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.275" y="4" as="geometry">
+            <mxPoint x="-1" y="11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6TUfgK-I4r8hVUq-_ZQa-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;golang&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="200" x="60" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="SSOv3E3qyXkc4QTYZPYC-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;1. Publish a module&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="230" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="foRmjqmN_KZ9A-qxsiMh-4" edge="1" parent="1" source="foRmjqmN_KZ9A-qxsiMh-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="6TUfgK-I4r8hVUq-_ZQa-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="foRmjqmN_KZ9A-qxsiMh-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;(1) create a module&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="170" x="75" y="730" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="LezgBOJfUNvLPS2_2u36" name="Download">
+    <mxGraphModel dx="1358" dy="842" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Svj-4oQAtrZyy38yJsB4-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="920" width="850" as="geometry" />
+        </mxCell>
+        <mxCell id="pGKfQjKXDBgaMYv8lH6Y-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="690" width="240" x="40" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="pGKfQjKXDBgaMYv8lH6Y-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="560" width="240" x="520" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="pGKfQjKXDBgaMYv8lH6Y-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;Your remote server&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="160" x="520" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pGKfQjKXDBgaMYv8lH6Y-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 18px;&quot;&gt;Your PC&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="160" x="40" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pGKfQjKXDBgaMYv8lH6Y-7" edge="1" parent="1" source="pGKfQjKXDBgaMYv8lH6Y-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" target="pGKfQjKXDBgaMYv8lH6Y-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pGKfQjKXDBgaMYv8lH6Y-8" connectable="0" parent="pGKfQjKXDBgaMYv8lH6Y-7" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;span style=&quot;font-size: 18px;&quot;&gt;(4) module download info&lt;/span&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.2429" y="-2" as="geometry">
+            <mxPoint x="34" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pGKfQjKXDBgaMYv8lH6Y-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;ezproxy&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="200" x="540" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="pGKfQjKXDBgaMYv8lH6Y-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;git&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="200" x="540" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="pGKfQjKXDBgaMYv8lH6Y-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;/var/git/repo-1&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;/var/git/repo-2&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;...&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;/var/git/repo-N&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="170" width="200" x="540" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="pGKfQjKXDBgaMYv8lH6Y-12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;~/my-repos/repo-1&lt;br&gt;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;~/my-repos&lt;/span&gt;/repo-2&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;...&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;~/my-repos&lt;/span&gt;/repo-N&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="170" width="200" x="60" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="pGKfQjKXDBgaMYv8lH6Y-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;git&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="200" x="60" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="pGKfQjKXDBgaMYv8lH6Y-14" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;b style=&quot;&quot;&gt;bare&lt;/b&gt; repos&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="100" x="540" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="pGKfQjKXDBgaMYv8lH6Y-15" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;b style=&quot;&quot;&gt;regular &lt;/b&gt;(not bare)&amp;nbsp;repos&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="200" x="60" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="pGKfQjKXDBgaMYv8lH6Y-18" edge="1" parent="1" source="pGKfQjKXDBgaMYv8lH6Y-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" target="pGKfQjKXDBgaMYv8lH6Y-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pGKfQjKXDBgaMYv8lH6Y-19" connectable="0" parent="pGKfQjKXDBgaMYv8lH6Y-18" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;span style=&quot;font-size: 18px;&quot;&gt;(3) go get &amp;lt;module&amp;gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.0786" y="-1" as="geometry">
+            <mxPoint y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LqHrtNOvy88txiq-bLmp-9" edge="1" parent="1" source="pGKfQjKXDBgaMYv8lH6Y-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="pGKfQjKXDBgaMYv8lH6Y-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LqHrtNOvy88txiq-bLmp-11" connectable="0" parent="LqHrtNOvy88txiq-bLmp-9" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;span style=&quot;font-size: 18px;&quot;&gt;(5) downloading a module&lt;/span&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.1214" y="2" as="geometry">
+            <mxPoint x="34" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pGKfQjKXDBgaMYv8lH6Y-20" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;golang&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="200" x="60" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="pGKfQjKXDBgaMYv8lH6Y-21" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;2. Download a module&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="280" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="LqHrtNOvy88txiq-bLmp-7" edge="1" parent="1" source="LqHrtNOvy88txiq-bLmp-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="LqHrtNOvy88txiq-bLmp-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LqHrtNOvy88txiq-bLmp-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;(1) open/create a Go project&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="170" x="75" y="790" as="geometry" />
+        </mxCell>
+        <mxCell id="LqHrtNOvy88txiq-bLmp-4" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="50" width="230" x="45" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="LqHrtNOvy88txiq-bLmp-2" parent="LqHrtNOvy88txiq-bLmp-4" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;(2) import a module&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="170" x="30" as="geometry" />
+        </mxCell>
+        <mxCell id="LqHrtNOvy88txiq-bLmp-3" parent="LqHrtNOvy88txiq-bLmp-4" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;import &quot;git.example.com/go-mymodule&quot;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="230" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="LqHrtNOvy88txiq-bLmp-6" edge="1" parent="1" source="LqHrtNOvy88txiq-bLmp-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="pGKfQjKXDBgaMYv8lH6Y-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

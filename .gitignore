@@ -1,2 +1,4 @@
 *.sh
+*.tmp
+*.bkp
 configs/prod.json
